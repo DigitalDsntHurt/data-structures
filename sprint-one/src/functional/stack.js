@@ -11,10 +11,10 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
-    if (someInstance.size > 0) {
-      let lastIndex = someInstance.keys().length - 1;
-      delete storage.lastIndex;
-    }
+    let lastIndex = someInstance.size() - 1;
+    let deletedValue = storage[lastIndex];
+    delete storage[lastIndex];
+    return deletedValue;
   };
 
   someInstance.size = function() {
@@ -25,10 +25,6 @@ var Stack = function() {
   someInstance.keys = function() {
     return Object.keys(storage);
   };
-
-  // someInstance.numericKeys = function() {
-  //   return someInstance.keys.map(n => Number.parseInt(n));
-  // };
 
   return someInstance;
 };
