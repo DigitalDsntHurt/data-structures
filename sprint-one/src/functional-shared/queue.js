@@ -2,6 +2,7 @@ var Queue = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
   var queue = {};
+  queue.storage = {};
 
   // USE OF _.extend BELOW IS THROWING A ReferenceError: _ is not defined
   // I'M CHOOSING TO IMPLEMENT MY OWN EXTEND RATHER THAN FIGURE OUT WHY UNDERSCORE ISN'T LOADING
@@ -20,21 +21,31 @@ var extend = function(obj, methods) {
 };
 
 var queueMethods = {
-  enqueue() {
-
+  enqueue(value) {
+    // iterate over each item in the queue from back to front
+    for (var i = this.size() - 1; i >= 0; i--) {
+      // increment each item's index
+      this.storage[i + 1] = this.storage[i];
+    }
+    // add value to queue at index 0
+    this.storage[0] = value;
   },
   dequeue() {
-    var lastIndex = size() - 1;
-    // var dequeued = this.queue[lastIndex];
-    // delete this.queue[lastIndex];
+    var lastIndex = this.size() - 1;
+    var dequeued = this.storage[lastIndex];
+    delete this.storage[lastIndex];
     // return dequeued;
-    return lastIndex;
+    return dequeued;
   },
-  size() {
-    return Object.keys(this).length;
+  size: function() {
+    return Object.keys(this.storage).length;
   }
 };
 
 var mine = Queue();
-console.log(mine);
-console.log(mine.size());
+// console.log(mine);
+console.log(mine.size()); // 0
+mine.enqueue('harry');
+console.log(mine.size()); // 1
+mine.dequeue();
+console.log(mine.size()); // 0
