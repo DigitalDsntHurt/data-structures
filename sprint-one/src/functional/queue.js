@@ -14,8 +14,8 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    let lastIndex = someInstance.size() - 1;
-    let lastItem = storage[lastIndex];
+    var lastIndex = someInstance.size() - 1;
+    var lastItem = storage[lastIndex];
     delete storage[lastIndex];
     return lastItem;
   };
