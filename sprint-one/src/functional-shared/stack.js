@@ -15,15 +15,18 @@ var extend = function(obj, methods) {
 
 var stackMethods = {
   push(value) {
-    for (var i = this.size() - 1; i >= 0; i--) {
-      this.storage[i + 1] = this.storage[i];
-    }
-    this.storage[0] = value;
+    // for (var i = this.size() - 1; i >= 0; i--) {
+    //   this.storage[i + 1] = this.storage[i];
+    // }
+    // this.storage[0] = value;
+
+    this.storage[this.size()] = value;
   },
   pop() {
     var lastIndex = this.size() - 1;
     var lastItem = this.storage[lastIndex];
     delete this.storage[lastIndex];
+    debugger;
     return lastItem;
   },
   size() {
