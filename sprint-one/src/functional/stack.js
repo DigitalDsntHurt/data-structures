@@ -12,9 +12,9 @@ var Stack = function() {
 
   someInstance.pop = function() {
     var lastIndex = someInstance.size() - 1;
-    var deletedValue = storage[lastIndex];
+    var lastItem = storage[lastIndex];
     delete storage[lastIndex];
-    return deletedValue;
+    return lastItem;
   };
 
   someInstance.size = function() {
