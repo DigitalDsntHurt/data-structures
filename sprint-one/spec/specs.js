@@ -75,7 +75,6 @@ define([
       it('removes the most recently added of two items', function() {
         stack.push('a');
         stack.push('b');
-        // debugger;
         expect(stack.pop()).to.equal('b');
       });
 
