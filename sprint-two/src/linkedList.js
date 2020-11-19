@@ -4,16 +4,10 @@ var LinkedList = function() {
   list.tail = null; // always 0 //
 
   list.addToTail = function(value) {
-    //Adds value to the 0 index of list
-    //Shifts all previous values up but 1 index
-    //Updates list.head to equal highest index
     if (list.head === null) {
       list.head = 0;
       list.tail = 0;
     }
-    // else if (list.head === list.tail) {
-    //   list.head = list.head + 1;
-    // }
     for (var i = list.head; i >= 0; i--) {
       list[i + 1] = list[i];
     }
@@ -23,8 +17,6 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-
-
     // if we just removed the last property from list, reset head and tail to null
   };
 
