@@ -3,7 +3,8 @@ var Stack = function() {
   // but try not not reference your old code in writing the new style.
   var stack = {};
   stack.storage = {};
-  extend(stack, stackMethods);
+  // extend(stack, stackMethods);
+  _.extend(stack, stackMethods); //=> what i think it should be with underscore
   return stack;
 };
 

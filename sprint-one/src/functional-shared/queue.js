@@ -3,7 +3,8 @@ var Queue = function() {
   // but try not not reference your old code in writing the new style.
   var queue = {};
   queue.storage = {};
-  extend(queue, queueMethods);
+  // extend(queue, queueMethods);
+  _.extend(queue, queueMethods); //=> what i think it should be with underscore
   return queue;
 };
 
