@@ -20,8 +20,13 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-
-    // if we just removed the last property from list, reset head and tail to null
+    var result = list.head;
+    if (!list.head.next) {
+      list.head = null;
+      list.tail = null;
+    }
+    list.head = list.head.next;
+    return result.value;
   };
 
   list.contains = function(target) {
