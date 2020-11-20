@@ -20,18 +20,27 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    var result = list.head;
+    var removedNode = list.head;
     if (!list.head.next) {
       list.head = null;
       list.tail = null;
     }
     list.head = list.head.next;
-    return result.value;
+    return removedNode.value;
   };
 
   list.contains = function(target) {
+    var listContains = function (node) {
+      if (target === node.value) {
+        return true;
+      }
+      if (!node.next) {
+        return false;
+      }
+      return listContains(node.next);
+    };
+    return listContains(list.head);
   };
-
   return list;
 };
 
