@@ -1,5 +1,5 @@
 // Instantiate a new graph
-var Graph = function() {
+let Graph = function() {
   this.graphStorage = {};
 };
 
@@ -43,6 +43,9 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+  for (let node in this.graphStorage) {
+    cb(node);
+  }
 };
 
 /*
