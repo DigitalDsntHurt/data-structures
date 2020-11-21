@@ -12,9 +12,33 @@ var treeMethods = {};
 
 treeMethods.addChild = function(value) {
   var newTree = Tree(value);
-  newTree.parent = (this); // parens here?
+  // newTree.parent = (this); // parens here?
   // newTree.sibling = this.children;
   this.children.push(newTree);
+};
+
+treeMethods.contains = function(target) {
+  debugger;
+  let found = false;
+  const findValue = function(tree) {
+    if (tree.value === target) { found = true; }
+    for (var child of tree.children) {
+      findValue(child);
+    }
+    return found;
+  };
+
+  return findValue(this);
+
+  // if (this.value === target) { return true; }
+  // if (this.children.length === 0) { return false; }
+
+  // for (var child of this.children) {
+  //   // conditional here ?
+  //   return child.contains(target);
+  // }
+
+  // return false;
 };
 
 // treeMethods.contains = function(target) {
@@ -88,19 +112,6 @@ treeMethods.addChild = function(value) {
 // };
 
 
-// treeMethods.contains = function(target) {
-//   console.log(this.value);
-//   if (this.value === target) { return true; }
-//   if (this.children.length === 0) { return false; }
-
-//   for (var child of this.children) {
-//     return child.contains(target);
-//   }
-
-//   return false;
-// };
-
-
 // var mine = Tree('kitten');
 // console.log(mine);
 /*
@@ -116,15 +127,24 @@ treeMethods.addChild = function(value) {
 // console.log(mine);
 // mine.contains(202);
 
-treeMethods.contains = function(target) {
-  // console.log(this.value);
-  for (var child of this.children) {
-    if (child.value === target) { console.log('winner'); }
-    console.log(child.value);
-    child.contains(target);
-  }
-  console.log('===');
-};
+
+
+
+
+
+
+
+
+
+// treeMethods.contains = function(target) {
+//   // console.log(this.value);
+//   for (var child of this.children) {
+//     if (child.value === target) { console.log('winner'); }
+//     console.log(child.value);
+//     child.contains(target);
+//   }
+//   console.log('===');
+// };
 
 /*
 function(target) {
