@@ -20,13 +20,17 @@ describe('hashTable', function() {
 
   it('should not contain values that were not inserted', function() {
     hashTable.insert('Steven', 'Spielberg');
+
     expect(hashTable.retrieve('Steven')).not.to.equal('Seagal');
   });
 
   it('should overwrite values that have the same key', function() {
     hashTable.insert('Bob', 'Loblaw');
     hashTable.insert('Bob', 'Barker');
+    hashTable.insert('Tom', 'Delong');
+    console.log(hashTable);
     expect(hashTable.retrieve('Bob')).to.equal('Barker');
+    // console.log(hashTable);
   });
 
   it('should not contain values that were removed', function() {
@@ -39,9 +43,17 @@ describe('hashTable', function() {
     var v1 = 'val1';
     var v2 = 'val2';
     var oldHashFunction = window.getIndexBelowMaxForKey;
-    window.getIndexBelowMaxForKey = function() { return 0; };
-    hashTable.insert(v1, v1);
-    hashTable.insert(v2, v2);
+    // window.getIndexBelowMaxForKey = function() { return 0; };
+    // hashTable.insert(v1, v1);
+    // hashTable.insert(v2, v2);
+    // console.log(v1);
+    // console.log(hashTable.retrieve(v1));
+    // console.log('---');
+    // console.log(v2);
+    // console.log(hashTable.retrieve(v2));
+    // console.log('---');
+    // console.log('---');
+    // console.log(hashTable);
     expect(hashTable.retrieve(v1)).to.equal(v1);
     expect(hashTable.retrieve(v2)).to.equal(v2);
     window.getIndexBelowMaxForKey = oldHashFunction;
