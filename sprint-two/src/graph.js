@@ -53,5 +53,5 @@ Graph.prototype.forEachNode = function(cb) {
  */
 
 
-let mine = new Graph();
-console.log(mine);
+// let mine = new Graph();
+// console.log(mine);
