@@ -21,25 +21,11 @@ var BinarySearchTree = function(value) {
   };
 
   tree.contains = function(searchValue) {
-    // let isPresent = false;
-    // const findValue = function(node) {
-    //   /**
-    //    * if searchValue = current tree's value
-    //    *   isPresent = true
-    //    * if searchValue > current tree's value
-    //    *   tree.right.findValue(searchValue)
-    //    * if searchValue < current tree's value
-    //    *   tree.left.findValue(searchValue)
-    //    */
-    //   console.log(node.value)
-    //   console.log(searchValue)
-    //   if (searchValue = node.value) { isPresent = true; }
-    //   if (searchValue > node.value) { node.right.findValue(node.right); }
-    //   if (searchValue < node.value) { node.left.findValue(node.left); }
-    //   console.log('===')
-    // };
-    // findValue(this);
-    // return isPresent;
+    let found = false;
+    if (this.value === searchValue) { found = true; }
+    if (this.left !== null) { found = found || this.left.contains(searchValue); }
+    if (this.right !== null) { found = found || this.right.contains(searchValue); }
+    return found;
   };
 
   tree.depthFirstLog = function() {};
