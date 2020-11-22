@@ -3,34 +3,44 @@ var LinkedList = function() {
   list.head = null; // always highest index //
   list.tail = null; // always 0 //
 
+  //When values are assigned, they're assigned to the property 0 instead of tail
+
   list.addToTail = function(value) {
-    //Adds value to the 0 index of list
-    //Shifts all previous values up but 1 index
-    //Updates list.head to equal highest index
-    if (list.head === null) {
-      list.head = 0;
-      list.tail = 0;
+    var newNode = Node(value);
+
+    //this happens if we have no nodes
+    if (list.head === null && list.tail === null) {
+      list.head = newNode;
+      list.tail = newNode;
     }
-    // else if (list.head === list.tail) {
-    //   list.head = list.head + 1;
-    // }
-    for (var i = list.head; i >= 0; i--) {
-      list[i + 1] = list[i];
+    if (list.head && list.tail) {
+      list.tail = newNode;
+      list.head.next = newNode;
     }
-    list[list.tail] = Node(value);
-    list.head = list.head + 1;
-    debugger;
   };
 
   list.removeHead = function() {
-
-
-    // if we just removed the last property from list, reset head and tail to null
+    var removedNode = list.head;
+    if (!list.head.next) {
+      list.head = null;
+      list.tail = null;
+    }
+    list.head = list.head.next;
+    return removedNode.value;
   };
 
   list.contains = function(target) {
+    var listContains = function (node) {
+      if (target === node.value) {
+        return true;
+      }
+      if (!node.next) {
+        return false;
+      }
+      return listContains(node.next);
+    };
+    return listContains(list.head);
   };
-
   return list;
 };
 

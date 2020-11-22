@@ -20,6 +20,7 @@ var LimitedArray = function(limit) {
     return storage[index];
   };
   limitedArray.set = function(index, value) {
+    //getIndexBelowMaxForKey(value), value
     checkLimit(index);
     storage[index] = value;
   };
