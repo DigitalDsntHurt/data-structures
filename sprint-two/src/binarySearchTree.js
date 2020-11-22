@@ -28,7 +28,11 @@ var BinarySearchTree = function(value) {
     return found;
   };
 
-  tree.depthFirstLog = function() {};
+  tree.depthFirstLog = function(cb) {
+    cb(this.value);
+    if (this.left !== null) { this.left.depthFirstLog(cb); }
+    if (this.right !== null) { this.right.depthFirstLog(cb); }
+  };
 
   return tree;
 };
