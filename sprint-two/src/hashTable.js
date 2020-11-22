@@ -25,11 +25,6 @@ HashTable.prototype.insert = function(k, v) {
     }
   }
 };
-// [        [        [Bob, Barker], [Tom, Delong]              ]   ] _storage[index].length > 0
-// [        [        {Bob: barker, Tom: Delong}                ]   ] _storage[index[0][key]]
-// [        [        {Bob: barker}, {Tom: Delong}              ]   ]
-
-
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);

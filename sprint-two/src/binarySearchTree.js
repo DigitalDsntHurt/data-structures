@@ -21,26 +21,19 @@ var BinarySearchTree = function(value) {
   };
 
   tree.contains = function(searchValue) {
-    let isPresent = false;
-    const findValue = function() {
-      /**
-       * if searchValue = current tree's value
-       *   isPresent = true
-       * if searchValue > current tree's value
-       *   tree.right.findValue(searchValue)
-       * if searchValue < current tree's value
-       *   tree.left.findValue(searchValue)
-       */
-
-      if (searchValue = this.value) { isPresent = true; }
-      if (searchValue > this.value) { this.right.findValue(searchValue); }
-      if (searchValue < this.value) { this.left.findValue(searchValue); }
-
-    };
-    findValue(searchValue);
-    return isPresent;
+    let found = false;
+    if (this.value === searchValue) { found = true; }
+    if (this.left !== null) { found = found || this.left.contains(searchValue); }
+    if (this.right !== null) { found = found || this.right.contains(searchValue); }
+    return found;
   };
-  tree.depthFirstLog = function() {};
+
+  tree.depthFirstLog = function(cb) {
+    cb(this.value);
+    if (this.left !== null) { this.left.depthFirstLog(cb); }
+    if (this.right !== null) { this.right.depthFirstLog(cb); }
+  };
+
   return tree;
 };
 
@@ -48,9 +41,3 @@ var BinarySearchTree = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-let mine = BinarySearchTree(5);
-console.log(mine);
-mine.insert(2);
-console.log(mine);
-mine.insert(3);
-console.log(mine);
