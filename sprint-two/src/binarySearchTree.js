@@ -41,9 +41,3 @@ var BinarySearchTree = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-// let mine = BinarySearchTree(5);
-// console.log(mine);
-// mine.insert(2);
-// console.log(mine);
-// mine.insert(3);
-// console.log(mine);
