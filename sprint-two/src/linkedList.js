@@ -1,14 +1,11 @@
 var LinkedList = function() {
   var list = {};
-  list.head = null; // always highest index //
-  list.tail = null; // always 0 //
-
-  //When values are assigned, they're assigned to the property 0 instead of tail
+  list.head = null;
+  list.tail = null;
 
   list.addToTail = function(value) {
     var newNode = Node(value);
 
-    //this happens if we have no nodes
     if (list.head === null && list.tail === null) {
       list.head = newNode;
       list.tail = newNode;
