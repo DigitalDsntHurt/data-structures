@@ -31,16 +31,13 @@ var LinkedList = function() {
 
   list.contains = function(target) {
     var listContains = function (node) {
-      if (target === node.value) {
-        return true;
-      }
-      if (!node.next) {
-        return false;
-      }
+      if (target === node.value) { return true; }
+      if (!node.next) { return false; }
       return listContains(node.next);
     };
     return listContains(list.head);
   };
+
   return list;
 };
 
@@ -55,4 +52,14 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ *
+ * * .addToTail
+ * * * O(1)
+ *
+ * * .removeHead
+ * * * O(1)
+ *
+ * * .contains
+ * * * O(n)
+ *
  */
